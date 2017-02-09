@@ -1,0 +1,20 @@
+{
+  "name": "i18n-RU-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./build.sh"
+  },
+  "author": "Ivan Bausov",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^7.0.5",
+    "@types/typescript": "^2.0.0",
+    "typescript": "^2.1.6"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.41",
+    "jasmine": "^2.5.3"
+  }
+}
