@@ -44,23 +44,37 @@ export function getCyrillicI18NNodes(file_name:string, data:string):FileDictiona
 
     processNode(sourceFile);
 
-    function processNode(node:ts.Node) {
+    function processText(text:string) {
+        if (/[А-я]+/.test(text)) {
 
+            result['_' + found_count] = {
+                text: text
+            };
+
+            found_count++;
+        }
+    }
+
+    function getText(node:ts.Node):string {
         switch (node.kind) {
             case ts.SyntaxKind.StringLiteral:
-                let text = (<ts.StringLiteral>node).text;
+                return (<ts.StringLiteral>node).text;
 
-                if (/[А-я]+/.test(text)) {
+            case ts.SyntaxKind.FirstTemplateToken:
+                return (<ts.StringLiteral>node).text;
 
-                    result['_' + found_count] = {
-                        text: text
-                    };
-
-                    found_count++;
-                }
-
-                break;
+            case ts.SyntaxKind.TemplateExpression:
+                return data
+                    .substr(node.pos, node.end - node.pos)
+                    .trim()
+                    .replace(/`/g, '');
         }
+    }
+
+    function processNode(node:ts.Node) {
+        let text:string = getText(node);
+
+        text && processText(text);
 
         ts.forEachChild(node, processNode);
     }

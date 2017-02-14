@@ -1,0 +1,1 @@
+export const c1:string = t("_0._0");

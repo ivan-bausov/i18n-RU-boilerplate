@@ -23,6 +23,17 @@ describe('getCyrillicI18NNodes', () => {
            }
        });
     });
+
+    it('string templates', () => {
+       expect(getCyrillicI18NNodes('./spec/string_templates/src.ts', readFileSync('./spec/string_templates/src.ts').toString())).toEqual({
+           _0: {
+               text: 'Тест01'
+           },
+           _1: {
+               text: 'Тест01 ${test.get()} Тест02 ${test01} Тест 03'
+           }
+       });
+    });
 });
 
 describe('i18nRuTranslate', () => {
