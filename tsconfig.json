@@ -9,6 +9,9 @@
   },
   "exclude": [
     "node_modules/**/*",
-    "example.ts"
+    "example.ts",
+    "spec/**/dest.ts",
+    "spec/**/src.ts",
+    "spec/**/result.ts"
   ]
 }
