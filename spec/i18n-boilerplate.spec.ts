@@ -3,7 +3,7 @@
  * Date: 09/02/17
  * Time: 22:50
  */
-import {getCyrillicI18NNodes, i18nRuTranslate} from "../i18n-RU-boilerplate";
+import {getCyrillicI18NNodes, i18nRuTranslate, interfaceToKeyObject} from "../i18n-RU-boilerplate";
 import {readFileSync} from "fs";
 
 describe('getCyrillicI18NNodes', () => {
@@ -20,6 +20,9 @@ describe('getCyrillicI18NNodes', () => {
            },
            _3: {
                text: 'Тест Test'
+           },
+           _4: {
+               text: 'Тест ivi+'
            }
        });
     });
@@ -42,3 +45,15 @@ describe('i18nRuTranslate', () => {
         expect(readFileSync('./spec/simple_strings/result.ts').toString()).toBe(readFileSync('./spec/simple_strings/dest.ts').toString())
     });
 });
+
+// describe('i18nRuTranslate', () => {
+//     it('simple strings', () => {
+//         i18nRuTranslate(['./spec/bundle/bundle.ts'], (src:string) => './spec/bundle/bundle.result.js');
+//     });
+// });
+//
+// describe('interfaceToKeyObject', () => {
+//     it('interface to key object', () => {
+//         expect(interfaceToKeyObject('./spec/interface_to_object/src.ts', readFileSync('./spec/interface_to_object/src.ts').toString(), 'ILocaleMessages')).toEqual(readFileSync('./spec/interface_to_object/dest.ts').toString());
+//     });
+// });
